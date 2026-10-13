@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Interactive tools for MAT 228: graphs, Euler and Hamilton, trees, planarity, counting, probability.">
+<title>MAT 228 Help Tool</title>
+<!-- KaTeX for the formulas. If the CDN is blocked, core.js falls back to
+     plain text; nothing else depends on it. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js"></script>
+<!-- Bump ?v= on any publish that changes css/ or js/ (GitHub Pages caches). -->
+<link rel="stylesheet" href="css/site.css?v=20261013o">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="inner">
+    <button class="brand" type="button" data-lab="home">MAT 228 Help Tool</button>
+    <div class="labs" role="tablist" aria-label="labs">
+      <button class="tab" role="tab" id="tab-graphs" data-lab="graphs" aria-selected="false"><span class="n">1</span>Graphs</button>
+      <button class="tab" role="tab" id="tab-paths" data-lab="paths" aria-selected="false"><span class="n">2</span>Euler &amp; Hamilton</button>
+      <button class="tab" role="tab" id="tab-trees" data-lab="trees" aria-selected="false"><span class="n">3</span>Trees</button>
+      <button class="tab" role="tab" id="tab-planar" data-lab="planar" aria-selected="false"><span class="n">4</span>Planar &amp; colour</button>
+      <button class="tab" role="tab" id="tab-counting" data-lab="counting" aria-selected="false"><span class="n">5</span>Counting</button>
+      <button class="tab" role="tab" id="tab-prob" data-lab="prob" aria-selected="false"><span class="n">6</span>Probability</button>
+    </div>
+    <button class="themebtn" id="themebtn" type="button" aria-label="switch light or dark theme">theme</button>
+  </div>
+</nav>
+
+<main>
+<!-- =================================================================== HOME -->
+<section id="lab-home" class="wrap">
+  <header class="hero">
+    <div class="kicker">Otoniel Matute</div>
+    <h1>MAT 228 Help Tool</h1>
+    <p class="lede">Pick a lab. In the graph labs: tap to add a vertex, tap two vertices to join them, drag to move.</p>
+    <div class="books">
+      <a class="btn" href="https://richardhammack.github.io/DiscreteWSP/" target="_blank" rel="noopener">Hammack · <i>Discrete Math Elements</i> ↗</a>
+      <a class="btn" href="https://appliedcombinatorics.org/book/" target="_blank" rel="noopener">Keller &amp; Trotter · <i>Applied Combinatorics</i> ↗</a>
+    </div>
+  </header>
+
+  <div class="cards">
+    <button class="card" type="button" data-lab="graphs">
+      <svg viewBox="0 0 280 92" aria-hidden="true"><g stroke="var(--edge)" stroke-width="2.4"><line x1="40" y1="20" x2="110" y2="70"/><line x1="110" y1="70" x2="180" y2="22"/><line x1="40" y1="20" x2="180" y2="22"/><line x1="180" y1="22" x2="245" y2="68"/><line x1="110" y1="70" x2="245" y2="68"/></g><g stroke-width="2"><circle cx="40" cy="20" r="11" fill="var(--blue)" stroke="var(--blue)"/><circle cx="110" cy="70" r="11" fill="var(--orange)" stroke="var(--orange)"/><circle cx="180" cy="22" r="11" fill="var(--panel)" stroke="var(--red)"/><circle cx="245" cy="68" r="11" fill="var(--blue)" stroke="var(--blue)"/></g></svg>
+      <span class="secs">Lab 1 · Hammack 16.1–16.2</span>
+      <h3>Graph Playground</h3>
+      <p>Degrees, two-colouring, complement.</p>
+    </button>
+    <button class="card" type="button" data-lab="paths">
+      <svg viewBox="0 0 280 92" aria-hidden="true"><g stroke-width="3.4" fill="none"><path d="M40 70 L90 20 L140 70 L190 20 L240 70" stroke="var(--green)"/><path d="M40 70 L240 70" stroke="var(--violet)"/></g><g fill="var(--panel)" stroke="var(--ink)" stroke-width="2"><circle cx="40" cy="70" r="9"/><circle cx="90" cy="20" r="9"/><circle cx="140" cy="70" r="9"/><circle cx="190" cy="20" r="9"/><circle cx="240" cy="70" r="9"/></g></svg>
+      <span class="secs">Lab 2 · Hammack 16.3 · KT 5.3</span>
+      <h3>Euler &amp; Hamilton</h3>
+      <p>Euler circuits (Alg. 5.14), Hamilton cycles, Ore, Dirac.</p>
+    </button>
+    <button class="card" type="button" data-lab="trees">
+      <svg viewBox="0 0 280 92" aria-hidden="true"><g stroke-width="2.6"><line x1="140" y1="16" x2="80" y2="50" stroke="var(--green)"/><line x1="140" y1="16" x2="200" y2="50" stroke="var(--green)"/><line x1="80" y1="50" x2="50" y2="80" stroke="var(--green)"/><line x1="80" y1="50" x2="110" y2="80" stroke="var(--green)"/><line x1="200" y1="50" x2="230" y2="80" stroke="var(--green)"/><line x1="110" y1="80" x2="230" y2="80" stroke="var(--red)" stroke-dasharray="5 5"/></g><g fill="var(--panel)" stroke="var(--ink)" stroke-width="2"><circle cx="140" cy="16" r="8"/><circle cx="80" cy="50" r="8"/><circle cx="200" cy="50" r="8"/><circle cx="50" cy="80" r="8"/><circle cx="110" cy="80" r="8"/><circle cx="230" cy="80" r="8"/></g></svg>
+      <span class="secs">Lab 3 · Hammack 16.2 · KT 12.1</span>
+      <h3>Trees &amp; Kruskal</h3>
+      <p>Tree / forest check, unique paths, Kruskal.</p>
+    </button>
+    <button class="card" type="button" data-lab="planar">
+      <svg viewBox="0 0 280 92" aria-hidden="true"><polygon points="70,80 140,12 210,80" fill="var(--blue-soft)"/><polygon points="70,80 140,56 210,80" fill="var(--orange-soft)"/><g stroke="var(--edge)" stroke-width="2.4" fill="none"><polygon points="70,80 140,12 210,80"/><line x1="140" y1="12" x2="140" y2="56"/><line x1="70" y1="80" x2="140" y2="56"/><line x1="210" y1="80" x2="140" y2="56"/></g><g stroke-width="2"><circle cx="70" cy="80" r="9" fill="var(--blue)" stroke="var(--blue)"/><circle cx="140" cy="12" r="9" fill="var(--orange)" stroke="var(--orange)"/><circle cx="210" cy="80" r="9" fill="var(--green)" stroke="var(--green)"/><circle cx="140" cy="56" r="9" fill="var(--violet)" stroke="var(--violet)"/></g></svg>
+      <span class="secs">Lab 4 · KT 5.5 · Hammack 16.4</span>
+      <h3>Planarity &amp; Colouring</h3>
+      <p>Crossings, faces, Euler's formula, colouring.</p>
+    </button>
+    <button class="card" type="button" data-lab="counting">
+      <svg viewBox="0 0 280 92" aria-hidden="true"><g font-family="ui-monospace,monospace" font-size="15" text-anchor="middle"><rect x="30" y="10" width="105" height="34" rx="7" fill="var(--panel2)" stroke="var(--line)"/><rect x="145" y="10" width="105" height="34" rx="7" fill="var(--navy)"/><rect x="30" y="50" width="105" height="34" rx="7" fill="var(--panel2)" stroke="var(--line)"/><rect x="145" y="50" width="105" height="34" rx="7" fill="var(--panel2)" stroke="var(--line)"/><text x="82" y="32" fill="var(--ink)">n^k</text><text x="197" y="32" fill="var(--bg)">P(n,k)</text><text x="82" y="72" fill="var(--ink)">C(n,k)</text><text x="197" y="72" fill="var(--ink)">★★|★|★</text></g></svg>
+      <span class="secs">Lab 5 · Hammack Ch. 6</span>
+      <h3>Counting</h3>
+      <p>Counting table, stars and bars, Pascal, inclusion–exclusion.</p>
+    </button>
+    <button class="card" type="button" data-lab="prob">
+      <svg viewBox="0 0 280 92" aria-hidden="true"><g>
+        <rect x="70" y="8" width="22" height="22" rx="4" fill="var(--blue-soft)" stroke="var(--blue)"/><rect x="96" y="8" width="22" height="22" rx="4" fill="var(--panel2)" stroke="var(--line)"/><rect x="122" y="8" width="22" height="22" rx="4" fill="var(--blue)" stroke="var(--amber)" stroke-width="3"/><rect x="148" y="8" width="22" height="22" rx="4" fill="var(--panel2)" stroke="var(--amber)" stroke-width="3"/><rect x="174" y="8" width="22" height="22" rx="4" fill="var(--panel2)" stroke="var(--line)"/>
+        <rect x="70" y="34" width="22" height="22" rx="4" fill="var(--panel2)" stroke="var(--line)"/><rect x="96" y="34" width="22" height="22" rx="4" fill="var(--blue-soft)" stroke="var(--blue)"/><rect x="122" y="34" width="22" height="22" rx="4" fill="var(--panel2)" stroke="var(--amber)" stroke-width="3"/><rect x="148" y="34" width="22" height="22" rx="4" fill="var(--blue)" stroke="var(--amber)" stroke-width="3"/><rect x="174" y="34" width="22" height="22" rx="4" fill="var(--panel2)" stroke="var(--line)"/>
+        <rect x="70" y="60" width="22" height="22" rx="4" fill="var(--panel2)" stroke="var(--line)"/><rect x="96" y="60" width="22" height="22" rx="4" fill="var(--panel2)" stroke="var(--line)"/><rect x="122" y="60" width="22" height="22" rx="4" fill="var(--blue-soft)" stroke="var(--blue)"/><rect x="148" y="60" width="22" height="22" rx="4" fill="var(--panel2)" stroke="var(--amber)" stroke-width="3"/><rect x="174" y="60" width="22" height="22" rx="4" fill="var(--blue-soft)" stroke="var(--blue)"/></g></svg>
+      <span class="secs">Lab 6 · Hammack Ch. 7 · KT 10.4</span>
+      <h3>Probability</h3>
+      <p>Two dice, conditional probability, Bayes, expected value.</p>
+    </button>
+  </div>
+
+</section>
+
+<!-- ================================================================= LAB 1 -->
+<section id="lab-graphs" class="lab wrap hidden">
+  <header>
+    <div class="kicker">Lab 1 · <a href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=301" target="_blank" rel="noopener">Hammack 16.1–16.2</a></div>
+    <h2>Graph Playground</h2>
+    <p>Draw a graph or load an example. Switch the view with <b>Degrees / Two-colour / Complement</b>.</p>
+  </header>
+  <div class="bench" id="graphs-bench"></div>
+
+  <h3 class="sec">Theorems</h3>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=301" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 286"><b>Definition 16.1</b> · graph<span class="ext" aria-hidden="true">↗</span></a>
+      <p>A graph G is a finite set V(G) of <b>vertices</b> with a set E(G) of two-element subsets of V(G), the <b>edges</b>. The edge {x, y} is written xy. The <b>degree</b> deg(x) is the number of edges at x.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=307" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 292"><b>Proposition 16.1</b> · handshakes<span class="ext" aria-hidden="true">↗</span></a>
+      <p>\(\displaystyle\sum_{x\in V(G)} \deg(x) = 2\,|E(G)|.\)</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=307" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 292"><b>Proposition 16.2</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>Every graph has an <b>even</b> number of vertices of odd degree.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=304" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 289"><b>Definition 16.2</b> · subgraph<span class="ext" aria-hidden="true">↗</span></a>
+      <p>H is a subgraph of G when V(H) ⊆ V(G) and E(H) ⊆ E(G).</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=305" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 290"><b>Theorem 16.1</b> · bipartite<span class="ext" aria-hidden="true">↗</span></a>
+      <p>A graph is bipartite if and only if it contains no odd cycle.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=306" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 291"><b>Definition 16.3</b> · complement<span class="ext" aria-hidden="true">↗</span></a>
+      <p>The complement Ḡ has the same vertices as G, and xy is an edge of Ḡ exactly when it is <i>not</i> an edge of G.</p></div>
+  </div>
+
+  <h3 class="sec">Try</h3>
+  <div id="graphs-quiz"></div>
+</section>
+
+<!-- ================================================================= LAB 2 -->
+<section id="lab-paths" class="lab wrap hidden">
+  <header>
+    <div class="kicker">Lab 2 · <a href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=312" target="_blank" rel="noopener">Hammack 16.3</a> · <a href="https://appliedcombinatorics.org/book/s_graphs_eulerham.html" target="_blank" rel="noopener">Keller–Trotter 5.3</a></div>
+    <h2>Euler &amp; Hamilton</h2>
+    <p><b>Euler</b>: step through Algorithm 5.14 with ◀ ▶. <b>Trace it</b>: tap vertices to walk a route. <b>Hamilton</b>: search + Ore/Dirac check. Vertices are numbered as in Keller–Trotter.</p>
+  </header>
+  <div class="bench" id="paths-bench"></div>
+
+  <h3 class="sec">Theorems</h3>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphs_eulerham.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Theorem 5.13</b> · Euler<span class="ext" aria-hidden="true">↗</span></a>
+      <p>A graph (with no isolated vertices) is eulerian if and only if it is connected and every vertex has even degree.</p></div>
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphs_eulerham.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>Euler trails</b> · consequence<span class="ext" aria-hidden="true">↗</span></a>
+      <p>A connected graph has an Euler trail that is not a circuit exactly when it has <b>two</b> vertices of odd degree; the trail starts at one and ends at the other.</p></div>
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphs_eulerham.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Algorithm 5.14</b> · Eulerian Circuit Finder<span class="ext" aria-hidden="true">↗</span></a>
+      <p>Start with C = (1). Repeatedly take the <b>first</b> vertex of C with an unused edge, walk from it always to the <b>smallest</b>-labelled neighbour along an unused edge until stuck, and splice that walk into C. Stuck somewhere other than where you started? That vertex has odd degree.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=312" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 297"><b>Theorem 16.2</b> · Ore<span class="ext" aria-hidden="true">↗</span></a>
+      <p>If G has n &gt; 2 vertices and deg(x) + deg(y) ≥ n for every two <b>nonadjacent</b> vertices x, y, then G is Hamiltonian.</p></div>
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphs_eulerham.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Theorem 5.19</b> · Dirac<span class="ext" aria-hidden="true">↗</span></a>
+      <p>If G has n ≥ 3 vertices and every vertex has at least ⌈n/2⌉ neighbours, then G is Hamiltonian.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=313" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 298"><b>Theorem 16.3</b> · hypercubes<span class="ext" aria-hidden="true">↗</span></a>
+      <p>For n ≥ 2 the hypercube Qₙ is Hamiltonian.</p></div>
+  </div>
+
+  <h3 class="sec">Try</h3>
+  <div id="paths-quiz"></div>
+</section>
+
+<!-- ================================================================= LAB 3 -->
+<section id="lab-trees" class="lab wrap hidden">
+  <header>
+    <div class="kicker">Lab 3 · <a href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=307" target="_blank" rel="noopener">Hammack 16.2</a> · <a href="https://appliedcombinatorics.org/book/s_graphalgorithms_min-wt-span.html" target="_blank" rel="noopener">Keller–Trotter 12.1</a></div>
+    <h2>Trees &amp; Kruskal</h2>
+    <p><b>Tree?</b>: verdict and reason. <b>Unique path</b>: tap two vertices.</p>
+  </header>
+  <div class="bench" id="trees-bench"></div>
+
+  <h3 class="sec">Theorems</h3>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=308" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 293"><b>Definition 16.4</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>A <b>tree</b> is a connected graph that contains no cycles. A <b>forest</b> is a graph that contains no cycles.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=309" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 294"><b>Proposition 16.3</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>A tree with n vertices has n − 1 edges.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=309" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 294"><b>Corollary 16.1</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>A forest with n vertices and c components has n − c edges.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=310" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 295"><b>Lemma 16.1</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>A tree with more than one vertex has a vertex of degree 1 (a <b>leaf</b>).</p></div>
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphalgorithms_min-wt-span.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Proposition 12.4</b> · exchange principle<span class="ext" aria-hidden="true">↗</span></a>
+      <p>In a spanning tree T there is a <b>unique</b> path between any two vertices x, y. If xy is an edge not in T, adding it and removing any edge of that path gives another spanning tree.</p></div>
+  </div>
+
+  <h3 class="sec">Kruskal's algorithm</h3>
+  <p class="sub">Tap a weight to edit it. ▶ decides one edge at a time.</p>
+  <div class="bench" id="trees-kruskal"></div>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphalgorithms_min-wt-span.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Algorithm 12.8</b> · Kruskal<span class="ext" aria-hidden="true">↗</span></a>
+      <p>Sort the edges so w(e₁) ≤ w(e₂) ≤ … ≤ w(eₘ). Start with S = ∅. While |S| &lt; n − 1, add the next edge eⱼ for which S ∪ {eⱼ} has no cycle.</p></div>
+  </div>
+
+  <h3 class="sec">Try</h3>
+  <div id="trees-quiz"></div>
+</section>
+
+<!-- ================================================================= LAB 4 -->
+<section id="lab-planar" class="lab wrap hidden">
+  <header>
+    <div class="kicker">Lab 4 · <a href="https://appliedcombinatorics.org/book/s_graphs_planar.html" target="_blank" rel="noopener">Keller–Trotter 5.5</a> · <a href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=317" target="_blank" rel="noopener">Hammack 16.4</a></div>
+    <h2>Planarity &amp; Colouring</h2>
+    <p>Drag vertices to remove crossings. Faces are counted once there are none.</p>
+  </header>
+  <div class="bench" id="planar-bench"></div>
+
+  <h3 class="sec">Theorems</h3>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphs_planar.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Theorem 5.33</b> · Euler's formula<span class="ext" aria-hidden="true">↗</span></a>
+      <p>Let G be a connected planar graph with n vertices and m edges. Every planar drawing of G has f faces, where \(n - m + f = 2\).</p></div>
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphs_planar.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Theorem 5.34</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>A planar graph on n ≥ 3 vertices has at most 3n − 6 edges.</p></div>
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphs_planar.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>No triangles</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>If a planar graph on n ≥ 3 vertices has no triangles, every face has at least 4 edges, so 4f ≤ 2m and m ≤ 2n − 4.</p></div>
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphs_planar.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Theorem 5.35</b> · Kuratowski<span class="ext" aria-hidden="true">↗</span></a>
+      <p>A graph is planar if and only if it does not contain a subgraph homeomorphic to K₅ or K₃,₃.</p></div>
+  </div>
+
+  <h3 class="sec">Colouring</h3>
+  <p class="sub"><b>Paint</b>: tap a vertex to change its colour. Or use Greedy / Fewest colours.</p>
+  <div class="bench" id="color-bench"></div>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=317" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 302"><b>Definition 16.5</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>The <b>chromatic number</b> χ(G) is the smallest k for which G has a proper k-colouring.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=319" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 304"><b>Proposition 16.5</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>If H is a subgraph of G, then χ(H) ≤ χ(G).</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=320" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 305"><b>Theorem 16.4</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>If G has largest degree Δ, then χ(G) ≤ Δ + 1.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=321" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 306"><b>Theorem 16.5</b> · Brooks<span class="ext" aria-hidden="true">↗</span></a>
+      <p>If G is connected and is neither a complete graph nor an odd cycle, then χ(G) ≤ Δ.</p></div>
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_graphs_planar.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Theorem 5.38</b> · Four Colour Theorem<span class="ext" aria-hidden="true">↗</span></a>
+      <p>Every planar graph has chromatic number at most four.</p></div>
+  </div>
+
+  <h3 class="sec">Try</h3>
+  <div id="planar-quiz"></div>
+</section>
+
+<!-- ================================================================= LAB 5 -->
+<section id="lab-counting" class="lab wrap hidden">
+  <header>
+    <div class="kicker">Lab 5 · <a href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=110" target="_blank" rel="noopener">Hammack Chapter 6</a></div>
+    <h2>Counting</h2>
+    <p>Set n and k, then pick a cell of the table.</p>
+  </header>
+  <div class="bench even" id="count-table"></div>
+
+  <h3 class="sec">Stars and bars</h3>
+  <p class="sub">+ / − changes the multiset.</p>
+  <div class="bench even" id="count-stars"></div>
+
+  <h3 class="sec">Pascal's triangle</h3>
+  <p class="sub">Tap an entry.</p>
+  <div class="bench even" id="count-pascal"></div>
+
+  <h3 class="sec">Inclusion–exclusion</h3>
+  <p class="sub">Type the count of each region. Hover a term to highlight what it counts.</p>
+  <div class="bench even" id="count-venn"></div>
+
+  <h3 class="sec">Theorems</h3>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=114" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 99"><b>Fact 6.1</b> · multiplication principle<span class="ext" aria-hidden="true">↗</span></a>
+      <p>If a list of length n has a₁ choices for the first entry, a₂ for the second, …, there are a₁·a₂·⋯·aₙ lists. With repetition from n things: \(n^k\) lists of length k.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=127" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 112"><b>Fact 6.4</b> · k-permutations<span class="ext" aria-hidden="true">↗</span></a>
+      <p>\(P(n,k) = n(n-1)\cdots(n-k+1) = \dfrac{n!}{(n-k)!}\) non-repetitive lists of length k from n elements.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=131" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 116"><b>Fact 6.5</b> · subsets<span class="ext" aria-hidden="true">↗</span></a>
+      <p>\(\dbinom{n}{k} = \dfrac{n!}{k!\,(n-k)!}\) for 0 ≤ k ≤ n (and 0 otherwise).</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=142" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 127"><b>Fact 6.8</b> · multisets<span class="ext" aria-hidden="true">↗</span></a>
+      <p>The number of k-element multisets from an n-element set is \(\dbinom{k+n-1}{k} = \dbinom{k+n-1}{n-1}\).</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=145" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 130"><b>Fact 6.9</b> · multiset permutations<span class="ext" aria-hidden="true">↗</span></a>
+      <p>A multiset of n elements with multiplicities p₁, …, pₖ has \(\dfrac{n!}{p_1!\,p_2!\cdots p_k!}\) permutations.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=136" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 121"><b>Theorem 6.6</b> · binomial theorem<span class="ext" aria-hidden="true">↗</span></a>
+      <p>\((x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k.\)</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=137" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 122"><b>Fact 6.7</b> · inclusion–exclusion<span class="ext" aria-hidden="true">↗</span></a>
+      <p>\(|A\cup B| = |A| + |B| - |A\cap B|\).</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=119" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 104"><b>Facts 6.2, 6.3</b> · addition &amp; subtraction<span class="ext" aria-hidden="true">↗</span></a>
+      <p>Disjoint pieces add up. And if X ⊆ U then \(|\overline{X}| = |U| - |X|\): sometimes counting what you <i>don't</i> want is easier.</p></div>
+  </div>
+
+  <h3 class="sec">Try</h3>
+  <div id="count-quiz"></div>
+</section>
+
+<!-- ================================================================= LAB 6 -->
+<section id="lab-prob" class="lab wrap hidden">
+  <header>
+    <div class="kicker">Lab 6 · <a href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=154" target="_blank" rel="noopener">Hammack Chapter 7</a> · <a href="https://appliedcombinatorics.org/book/s_probability_discrete-random-variables.html" target="_blank" rel="noopener">Keller–Trotter 10.4</a></div>
+    <h2>Probability</h2>
+    <p>Pick events A and B, or tap cells to build your own. <b>Condition on B</b> greys out everything outside B.</p>
+  </header>
+  <div class="bench even" id="prob-dice"></div>
+
+  <h3 class="sec">Theorems</h3>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=156" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 141"><b>Fact 7.1</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>If all outcomes in S are equally likely, the probability of an event E ⊆ S is \(p(E) = \dfrac{|E|}{|S|}\).</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=160" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 145"><b>Definition 7.1</b> · mutually exclusive<span class="ext" aria-hidden="true">↗</span></a>
+      <p>A and B are mutually exclusive if A ∩ B = ∅: they never happen together.</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=161" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 146"><b>Fact 7.2</b><span class="ext" aria-hidden="true">↗</span></a>
+      <p>\(p(A\cup B) = p(A)+p(B)-p(A\cap B)\), and \(p(\overline{A}) = 1 - p(A)\).</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=166" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 151"><b>Definition 7.2 · Fact 7.3</b> · conditional<span class="ext" aria-hidden="true">↗</span></a>
+      <p>p(A | B) is the probability of A given that B has happened: \(p(A\mid B) = \dfrac{p(A\cap B)}{p(B)}\), so \(p(A\cap B) = p(A\mid B)\,p(B)\).</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=168" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 153"><b>Definition 7.3</b> · independent<span class="ext" aria-hidden="true">↗</span></a>
+      <p>A and B are independent if one happening doesn't change the probability of the other: p(A) = p(A | B) and p(B) = p(B | A). Equivalently p(A ∩ B) = p(A)·p(B).</p></div>
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=174" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 159"><b>Definition 7.4</b> · distributions<span class="ext" aria-hidden="true">↗</span></a>
+      <p>When outcomes are not equally likely, give each outcome xᵢ a probability p(xᵢ) ≥ 0 with total 1; p(E) is the sum over the outcomes in E.</p></div>
+  </div>
+
+  <h3 class="sec">Bayes' formula</h3>
+  <p class="sub">Move the sliders.</p>
+  <div class="bench even" id="prob-bayes"></div>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://richardhammack.github.io/DiscreteWSP/Alpha.pdf#page=179" target="_blank" rel="noopener" title="Hammack, Discrete Math Elements, p. 164"><b>Fact 7.4</b> · Bayes' formula<span class="ext" aria-hidden="true">↗</span></a>
+      <p>If S = S₁ ∪ S₂ with S₁ ∩ S₂ = ∅ and E ⊆ S, then \(p(S_1\mid E) = \dfrac{p(S_1)\,p(E\mid S_1)}{p(S_1)\,p(E\mid S_1) + p(S_2)\,p(E\mid S_2)}.\)</p></div>
+  </div>
+
+  <h3 class="sec">Expected value</h3>
+  <p class="sub">Edit values and weights, then play.</p>
+  <div class="bench even" id="prob-ev"></div>
+  <div class="theory">
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_probability_discrete-random-variables.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT 10.4</b> · expectation<span class="ext" aria-hidden="true">↗</span></a>
+      <p>\(E(X) = \sum_{x\in S} X(x)\,P(x)\), the expectation (mean, expected value) of X.</p></div>
+    <div class="thm"><a class="t" href="https://appliedcombinatorics.org/book/s_probability_discrete-random-variables.html" target="_blank" rel="noopener" title="Keller & Trotter, Applied Combinatorics (online)"><b>KT Proposition 10.17</b> · linearity<span class="ext" aria-hidden="true">↗</span></a>
+      <p>\(E(X_1 + \cdots + X_n) = E(X_1) + \cdots + E(X_n)\), always, even when the Xᵢ are dependent.</p></div>
+  </div>
+
+  <h3 class="sec">Try</h3>
+  <div id="prob-quiz"></div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Otoniel Matute Cruz · MAT 228 Learning Contribution (Dr. Oldaker, Fall 2026) · built with AI assistance (Claude)</p>
+  </div>
+</footer>
+
+<script src="js/graph.js?v=20261013o"></script>
+<script src="js/count.js?v=20261013o"></script>
+<script src="js/core.js?v=20261013o"></script>
+<script src="js/editor.js?v=20261013o"></script>
+<script src="js/quiz.js?v=20261013o"></script>
+<script src="js/lab-graphs.js?v=20261013o"></script>
+<script src="js/lab-paths.js?v=20261013o"></script>
+<script src="js/lab-trees.js?v=20261013o"></script>
+<script src="js/lab-planar.js?v=20261013o"></script>
+<script src="js/lab-counting.js?v=20261013o"></script>
+<script src="js/lab-prob.js?v=20261013o"></script>
+<script>boot();</script>
+</body>
+</html>
